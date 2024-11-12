@@ -1,30 +1,15 @@
 package org.example;
 
-import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserType;
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Playwright;
+import com.microsoft.playwright.*;
+import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) {
-
-        Playwright pw = Playwright.create();
-
-        BrowserType browserType = pw.chromium();
-
-        Browser browser = browserType.launch(new BrowserType.LaunchOptions().setHeadless(false));
-
-        Page page = browser.newPage();
-
-        page.navigate("https://www.pokemoncenter.com/");
-
-        String title = page.title();
-
-        System.out.println("The title is: " + title);
-
-        //page.close();
-        //browser.close();
-        //pw.close();
-
+        try (Playwright playwright = Playwright.create()) {
+            Browser browser = playwright.webkit().launch();
+            Page page = browser.newPage();
+            page.navigate("https://playwright.dev/");
+            page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("example.png")));
+        }
     }
 }
