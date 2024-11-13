@@ -1,10 +1,8 @@
-# swe3643-fall2024-homework
+# swe3643-fall2024-homeworks
 
-Rafay Hassan
+this is for Homework3
 
-- Homewokr 1: Created a git repo and simple unit test
-- More testing
-- This is even more testing
+mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="codegen demo.playwright.dev/todomvc"
 
-- This is more testing again
-- even ommr testing
+
+
